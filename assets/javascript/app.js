@@ -60,6 +60,19 @@ console.log('waiting....');
 $('#ohyeah').click(function myFunction()
 {
 
+		$('#ohyeah').hide();
+
+	//STARTS THE TIMER
+	setTimeout(function(){
+
+		$('#ohyeah').show();
+		$('#question').html('Game over man, game over!');
+
+	},35000);
+
+
+
+
 	//this will loop through all the answers, waiting for answer clicks
 console.log("did we even start?");
 
