@@ -128,21 +128,34 @@ function htmlChange()
 				{
 					correct++;
 					i++;
-					htmlChange();
+
+						if (i === answerKey.length)
+							{
+								end();
+							}
+
+						else
+							{
+								htmlChange();
+							}
 					
 				}
 				else
 				{
 					incorrect++;
 					i++;
-					htmlChange();
-					
+
+						if (i === answerKey.length)
+							{
+								end();
+							}
+						else
+							{
+								htmlChange();
+							}
 				}
 
-			if (i === answerKey.length)
-			{
-				end();
-			}
+		
 
 
 		}
@@ -154,11 +167,20 @@ function end ()
 {
 	console.log("you got "+correct+" correct");
 	console.log("you got "+incorrect+" incorrect");
-	correct=0;
-	incorrect=0;
-	guess=0;
-	i=0;
-	myFunction();
+
+	$('#ohyeah').show();
+		$('#question').html('Game over man, game over! ');
+		$('#question').append(correct+' correct, '+incorrect+' incorrect');
+
+
+
+	$('#ohyeah').click(function (){
+		correct=0;
+		incorrect=0;
+		guess=0;
+		i=0;
+		myFunction();
+	});
 }
 
 
