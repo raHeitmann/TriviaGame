@@ -29,6 +29,16 @@ var questions = [
 					["of things 2 say"]
 				];
 
+var answers = [
+				['if i','had a dollar','for everytime','u sukd'],
+				['i would','be a rich man','for sure','u sukr'],
+				['if i','had a dollar','for everytime','u sukd'],
+				['i would','be a rich man','for sure','u sukr'],
+				['if i','had a dollar','for everytime','u sukd'],
+				['i would','be a rich man','for sure','u sukr'],
+				['if i','had a dollar','for everytime','u sukd'],
+			];
+
 var guess = 0;
 
 var i = 0;
@@ -43,16 +53,7 @@ function debug()
 
 console.log('waiting....');
 
-function end ()
-{
-	console.log("you got "+correct+" correct");
-	console.log("you got "+incorrect+" incorrect");
-	correct=0;
-	incorrect=0;
-	guess=0;
-	i=0;
-	myFunction();
-}
+
 
 
 //this is where our game starts
@@ -62,6 +63,17 @@ $('#ohyeah').click(function myFunction()
 	//this will loop through all the answers, waiting for answer clicks
 console.log("did we even start?");
 
+
+function htmlChange()
+			{
+				$('#question').html(questions[i]);
+					$('#a').html(answers[i][0]);
+					$('#b').html(answers[i][1]);
+					$('#c').html(answers[i][2]);
+					$('#d').html(answers[i][3]);
+
+			}
+	htmlChange();
 
 
 		$('#btn1').click(function()
@@ -96,16 +108,20 @@ console.log("did we even start?");
 
 		function scoreCounter()
 		{
+		
+
 			if (guess === 1)
 				{
 					correct++;
 					i++;
+					htmlChange();
 					
 				}
 				else
 				{
 					incorrect++;
 					i++;
+					htmlChange();
 					
 				}
 
@@ -113,10 +129,25 @@ console.log("did we even start?");
 			{
 				end();
 			}
+
+
 		}
 
 	
 	console.log (i);
+
+function end ()
+{
+	console.log("you got "+correct+" correct");
+	console.log("you got "+incorrect+" incorrect");
+	correct=0;
+	incorrect=0;
+	guess=0;
+	i=0;
+	myFunction();
+}
+
+
 
 });
 
