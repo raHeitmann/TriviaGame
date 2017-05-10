@@ -20,23 +20,23 @@ var answerKey = [
 				];
 
 var questions = [
-					["Do u liek dogs"],
-					["wat r cats"],
-					["who's green?"],
-					["r u okay"],
-					["dnt wry b hpy"],
-					["lol im all out"],
-					["of things 2 say"]
+					["This guitarist, originally named 'Johnny,' was born in 1942 in Seattle, Washington. He would go on to be arguably the greatest guitarist of all time, though he only lived to be twenty-seven. If I told you what band he was in, it would be way too obvious."],
+					["This drummer died young, at age 32 in 1978. He was known for his intense style of playing and destructive behavior. On the 'Smothers Brothers Comedy Hour', he overloaded his drums with explosives. They went off at the end of the performance, leaving Pete Townshend with permanent hearing damage."],
+					["This singer, originally named Stephen Tallarico, was part of the band who made hits such as 'Dream On' and 'Sweet Emotion.'"],
+					[" This frontman was knighted in 2003 for 'services to popular music.' His bandmate Keith Richards criticized the honor, though this singer suspected that Richards was actually a bit jealous."],
+					["This guitarist started with The Yardbirds, then moved on to become the lead guitarist of arguably the greatest rock band of all-time. Every rock fan should know this man, who played with Robert Plant, John Paul Jones, and John Bonham."],
+					["This Beatle was born in 1942, had a successful career after the band broke up, and played bass."],
+					["This singer began as a member of Black Sabbath, and also had a great solo career. He is one of the most famous men in rock and roll."]
 				];
 
 var answers = [
-				['if i','had a dollar','for everytime','u sukd'],
-				['i would','be a rich man','for sure','u sukr'],
-				['if i','had a dollar','for everytime','u sukd'],
-				['i would','be a rich man','for sure','u sukr'],
-				['if i','had a dollar','for everytime','u sukd'],
-				['i would','be a rich man','for sure','u sukr'],
-				['if i','had a dollar','for everytime','u sukd'],
+				[ 'Jimmy Page', 'Jimi Hendrix', 'Angus Young', 'Chuck Berry'],
+				[ 'John Bonham','Ringo Starr','Lars Ulrich','Keith Moon'],
+				[ 'Robert Plant','Axl Rose','Steven Tyler','Jim Morrison'],
+				[ 'Bono','Roger Daltrey','Mick Jagger','Sting'],
+				[ 'Angus Young','George Harrison','David Gilmour','Jimmy Page'],
+				[ 'Ringo Starr','John Lennon','George Harrison','Paul McCartney'],
+				[ 'Ozzy Osbourne','James Hetfield','Bono','Kurt Cobain'],
 			];
 
 var guess = 0;
@@ -66,7 +66,8 @@ $('#ohyeah').click(function myFunction()
 	setTimeout(function(){
 
 		$('#ohyeah').show();
-		$('#question').html('Game over man, game over!');
+		$('#question').html('Game over man, game over! ');
+		$('#question').append(correct+' correct, '+incorrect+' incorrect');
 
 	},35000);
 
