@@ -1,9 +1,14 @@
 *
 {
-	background-color: lightblue;
-	color:darkred;
+
+	color:white;
 	text-align: center;
 	box-sizing: border-box;
+}
+
+body 
+{
+	background-image: url(../images/rockConcert.jpg);
 }
 
 #ohyeah 

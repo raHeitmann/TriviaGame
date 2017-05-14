@@ -10,23 +10,23 @@ var incorrect = 0;
 var results = [correct, incorrect];
 
 var answerKey = [
-					[0,1,0,0], //	B
-					[0,0,0,1], //	D
-					[1,0,0,0], //	A
-					[0,1,0,0], //	B
-					[0,0,1,0], //	C
-					[1,0,0,0], //	A
-					[0,0,0,1], //	D
+					[0,1,0,0], //	1.B
+					[0,0,0,1], //	2.D
+					[0,0,1,0], //	3.C
+					[0,0,1,0], //	4.C
+					[0,0,0,1], //	5.D
+					[0,0,0,1], //	6.A
+					[1,0,0,0], //	7.A
 				];
 
 var questions = [
-					["This guitarist, originally named 'Johnny,' was born in 1942 in Seattle, Washington. He would go on to be arguably the greatest guitarist of all time, though he only lived to be twenty-seven. If I told you what band he was in, it would be way too obvious."],
-					["This drummer died young, at age 32 in 1978. He was known for his intense style of playing and destructive behavior. On the 'Smothers Brothers Comedy Hour', he overloaded his drums with explosives. They went off at the end of the performance, leaving Pete Townshend with permanent hearing damage."],
-					["This singer, originally named Stephen Tallarico, was part of the band who made hits such as 'Dream On' and 'Sweet Emotion.'"],
-					[" This frontman was knighted in 2003 for 'services to popular music.' His bandmate Keith Richards criticized the honor, though this singer suspected that Richards was actually a bit jealous."],
-					["This guitarist started with The Yardbirds, then moved on to become the lead guitarist of arguably the greatest rock band of all-time. Every rock fan should know this man, who played with Robert Plant, John Paul Jones, and John Bonham."],
-					["This Beatle was born in 1942, had a successful career after the band broke up, and played bass."],
-					["This singer began as a member of Black Sabbath, and also had a great solo career. He is one of the most famous men in rock and roll."]
+					"This guitarist, originally named 'Johnny,' was born in 1942 in Seattle, Washington. He would go on to be arguably the greatest guitarist of all time, though he only lived to be twenty-seven. If I told you what band he was in, it would be way too obvious.",
+					"This drummer died young, at age 32 in 1978. He was known for his intense style of playing and destructive behavior. On the 'Smothers Brothers Comedy Hour', he overloaded his drums with explosives. They went off at the end of the performance, leaving Pete Townshend with permanent hearing damage.",
+					"This singer, originally named Stephen Tallarico, was part of the band who made hits such as 'Dream On' and 'Sweet Emotion.'",
+					"This frontman was knighted in 2003 for 'services to popular music.' His bandmate Keith Richards criticized the honor, though this singer suspected that Richards was actually a bit jealous.",
+					"This guitarist started with The Yardbirds, then moved on to become the lead guitarist of arguably the greatest rock band of all-time. Every rock fan should know this man, who played with Robert Plant, John Paul Jones, and John Bonham.",
+					"This Beatle was born in 1942, had a successful career after the band broke up, and played bass.",
+					"This singer began as a member of Black Sabbath, and also had a great solo career. He is one of the most famous men in rock and roll."
 				];
 
 var answers = [
@@ -59,15 +59,25 @@ console.log('waiting....');
 //this is where our game starts
 $('#ohyeah').click(function myFunction()
 {
+		correct=0;
+		incorrect=0;
+		guess=0;
+		i=0;
+	debug();
+
+	$('#answers').show();
+	$('#multipleChoices').show();
 
 		$('#ohyeah').hide();
+		$('#instructions').hide();
 
 	//STARTS THE TIMER
-	setTimeout(function(){
+	var timer = setTimeout(function(){
 
 		$('#ohyeah').show();
 		$('#question').html('Game over man, game over! ');
 		$('#question').append(correct+' correct, '+incorrect+' incorrect');
+		i=0;
 
 	},35000);
 
@@ -75,11 +85,12 @@ $('#ohyeah').click(function myFunction()
 
 
 	//this will loop through all the answers, waiting for answer clicks
-console.log("did we even start?");
+console.log("did we even start?"+questions);
 
 
 function htmlChange()
 			{
+				console.log(i+" - i ");
 				$('#question').html(questions[i]);
 					$('#a').html(answers[i][0]);
 					$('#b').html(answers[i][1]);
@@ -122,6 +133,28 @@ function htmlChange()
 
 		function scoreCounter()
 		{
+								function end ()
+					{
+						$('#answers').hide();
+						$('#multipleChoices').hide();
+						console.log("you got "+correct+" correct");
+						console.log("you got "+incorrect+" incorrect");
+
+						$('#ohyeah').show();
+							$('#question').html('Game over man, game over! ');
+							$('#question').append(correct+' correct, '+incorrect+' incorrect');
+
+
+								correct=0;
+							incorrect=0;
+							guess=0;
+							i=0;
+
+						$('#ohyeah').click(function (){
+						
+							myFunction();
+						});
+					}
 		
 
 			if (guess === 1)
@@ -131,6 +164,8 @@ function htmlChange()
 
 						if (i === answerKey.length)
 							{
+								i=0;
+								clearTimeout(timer);
 								end();
 							}
 
@@ -147,6 +182,8 @@ function htmlChange()
 
 						if (i === answerKey.length)
 							{
+								i=0;
+								clearTimeout(timer);
 								end();
 							}
 						else
@@ -163,25 +200,7 @@ function htmlChange()
 	
 	console.log (i);
 
-function end ()
-{
-	console.log("you got "+correct+" correct");
-	console.log("you got "+incorrect+" incorrect");
 
-	$('#ohyeah').show();
-		$('#question').html('Game over man, game over! ');
-		$('#question').append(correct+' correct, '+incorrect+' incorrect');
-
-
-
-	$('#ohyeah').click(function (){
-		correct=0;
-		incorrect=0;
-		guess=0;
-		i=0;
-		myFunction();
-	});
-}
 
 
 
